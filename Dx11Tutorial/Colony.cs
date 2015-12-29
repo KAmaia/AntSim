@@ -36,16 +36,17 @@ namespace Colony {
 				//consequences from higher level updates.  
 				foreach ( Ant.Ant a in ants ) {
 					//First check to see if the ant is alive
-					//If not, remove the ant from the list.
 					if ( a.Alive ) {
 						a.OnTick( );
 
 					}
+					//If not move it to removeUs
 					else {
 
 						removeUs.Add( a );
 					}
 				}
+				//And finally, remove the dead ants from ants.
 				foreach ( Ant.Ant a in removeUs ) {
 					Console.WriteLine( "Removing ant from ants" );
 					ants.Remove( a );

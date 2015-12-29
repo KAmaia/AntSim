@@ -33,7 +33,7 @@ namespace Ant {
 			AddHunger( );
 			alive = health > 0;
 
-			String tickMessage = this.ToString() + " is Ticking\nHunger={" + hunger + "}\nHealth={" + health +"}\n";
+			String tickMessage = this.ToString() + " is Ticking\nHunger=" + hunger + "\nHealth=" + health +"\n";
 			Console.Write( tickMessage );
 
 		}
