@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+** Ant Simulator
+** Author: Krystal Amaia
+** 2015/12/29
+*/
+
+using System;
 using System.Collections.Generic;
 
 using System.Linq;
@@ -9,6 +15,7 @@ namespace AntSimulator {
 	class Program {
 		private static Simulator sim;
 		static void Main( string[ ] args ) {
+			//Start the Simulator.
 			sim = new Simulator( );
 			sim.run( );
 

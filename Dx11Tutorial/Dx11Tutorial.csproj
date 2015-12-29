@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Ant.cs" />
     <Compile Include="Colony.cs" />
-    <Compile Include="ConsoleWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Simulator.cs" />
