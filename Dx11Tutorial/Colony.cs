@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 namespace Colony {
 	class Colony {
 		private List<Ant.Ant> ants;
+		private bool alive;
 
+		public bool Alive { get { return alive; } }
 		public List<Ant.Ant> Ants { get { return ants; } }
 
-		private void GenerateAnts( ) {
-			//Generate a random number of ants to populate this colony.
-			//For now, not so random, we're just going to generate 1 ant.
-			ants.Add( new Ant.Ant( this ) );
-		}
+
+		//Colony Constructor
 		public Colony( ) {
 			ants = new List<Ant.Ant>( );
 			for ( int i = 0; i < 10; i++ ) {
@@ -23,10 +22,20 @@ namespace Colony {
 			}
 		}
 
+
+		private void GenerateAnts( ) {
+			//Generate a random number of ants to populate this colony.
+			//For now, not so random, we're just going to generate 1 ant.
+			ants.Add( new Ant.Ant( this ) );
+		}
+
+
+
 		public void OnTick( ) {
-			//Check to make sure the colony still has ants.  If not, set the colony as dead.
+			//Check to make sure the colony still has ants.  
+			//If not, set the colony as dead.
 			if ( ants.Count == 0 ) {
-				//set Colony death here.
+				alive = false;
 			}
 			else {
 				//List of ants to remove from the queue.

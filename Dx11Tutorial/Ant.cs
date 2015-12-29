@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ant {
 	class Ant {
-		private float hunger;
-		private float health;
+		private float hunger; //Huger grows from 0 to 1.0.  When it hits 1.0f ant starts taking damage.
+		private float health; //Health starts at 1.0f and is reduced to 0.0f, ant dies.
 		private bool alive;
 		private Colony.Colony colony;
 
@@ -29,6 +29,9 @@ namespace Ant {
 			hunger = 0.0f;
 
 		}
+		/// <summary>
+		/// Handles the game Tick
+		/// </summary>
 		public void OnTick( ) {
 			AddHunger( );
 			alive = health > 0;
@@ -37,6 +40,9 @@ namespace Ant {
 			Console.Write( tickMessage );
 
 		}
+		/// <summary>
+		/// Add's .001 to ant's hunger level.
+		/// </summary>
 		private void AddHunger( ) {
 			hunger += 0.001f;
 			//if hunger is 100% or greater, leave it 100%

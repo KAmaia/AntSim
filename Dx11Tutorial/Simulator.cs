@@ -22,7 +22,6 @@ namespace AntSimulator {
 			paused = false;
 			//Start the sim loop.  
 			while ( running ) {
-				//for right now, loop over all ants in ants and display their health.
 				Tick( );
 				passes++;
 				Console.WriteLine( passes );
@@ -37,9 +36,10 @@ namespace AntSimulator {
 
 		private void Tick( ) {
 			if ( !paused ) {
-				colony.OnTick( );
+				
 			}
 			else {
+				Console.WriteLine( "Sim Paused, press a key to continue" );
 				Console.ReadLine( );
 				paused = false;
 			}
