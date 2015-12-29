@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 using Ant;
 
 namespace AntSimulator {
+
 	class Simulator {
 
 		private bool running;
 		private List<Ant.Ant> ants;
 		public int run( ) {
-			ants = new List<Ant.Ant>();
+			ants = new List<Ant.Ant>( );
 			running = true;
 			while ( running ) {
 
 				generateAnts( );
-				foreach (Ant.Ant ant in ants ) {
+
+				//for right now, loop over all ants in ants and display their health.
+				foreach ( Ant.Ant ant in ants ) {
 					Console.WriteLine( ant.Health );
 
 					}

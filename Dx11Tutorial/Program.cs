@@ -11,7 +11,11 @@ namespace AntSimulator {
 		static void Main( string[ ] args ) {
 			sim = new Simulator( );
 			sim.run( );
-			Console.ReadLine();
+
+			//Everything is done running.  Pause until the user hits a key.  
+			//This will go away with graphics.
+			Console.WriteLine( "Press Any Key To Exit" );
+			Console.ReadLine( );
 			}
 		}
 	}
