@@ -7,8 +7,8 @@
     <ProjectGuid>{27413072-3019-4799-A716-6926445B0F04}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dx11Tutorial</RootNamespace>
-    <AssemblyName>Dx11Tutorial</AssemblyName>
+    <RootNamespace>AntSimulator</RootNamespace>
+    <AssemblyName>AntSimulator</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
