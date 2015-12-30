@@ -16,17 +16,21 @@ namespace AntSimulator {
 
 		//Colony Constructor
 		public Colony( ) {
+			alive = true;
 			ants = new List<Ant>( );
-			for ( int i = 0; i < 10; i++ ) {
-				ants.Add( new Ant( this ) );
-			}
+			GenerateAnts( );
+		
 		}
 
 
 		private void GenerateAnts( ) {
+			Console.WriteLine( "Generating Ants!" );
 			//Generate a random number of ants to populate this colony.
-			//For now, not so random, we're just going to generate 1 ant.
-			ants.Add( new Ant( this ) );
+			//For now, not so random, we're just going to generate 10 ants.
+			for ( int i = 0; i < 10; i++ ) {
+				Console.WriteLine( "Adding Ant {0} of 10", i );
+				ants.Add( new Ant( this ) );
+			}
 		}
 
 

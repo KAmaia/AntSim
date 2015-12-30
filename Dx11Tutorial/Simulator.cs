@@ -14,7 +14,7 @@ namespace AntSimulator {
 
 		private World world;
 
-		public int Run( ) {
+		public int Run( ) {			
 			int passes = 0;
 			world = new World();
 			running = true;
@@ -24,7 +24,7 @@ namespace AntSimulator {
 				Tick( );
 				passes++;
 				Console.WriteLine( passes );
-				if ( passes >= 1000 ) {
+				if ( passes >= 100 ) {
 					passes = 0;
 					paused = true;
 				}
@@ -35,7 +35,7 @@ namespace AntSimulator {
 
 		private void Tick( ) {
 			if ( !paused ) {
-				world.OnTick
+				world.OnTick( );
 			}
 			else {
 				Console.WriteLine( "Sim Paused, press a key to continue" );

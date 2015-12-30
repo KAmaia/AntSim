@@ -13,6 +13,10 @@ namespace AntSimulator {
 		public bool Alive { get { return alive; } }
 		public List<Colony> Colonies { get { return colonies; } }
 
+		public World( ) {
+			colonies = new List<Colony>( );
+			colonies.Add( new Colony( ) );
+		}
 
 		public void OnTick( ) {
 			//Check to see if we still have colonies.
