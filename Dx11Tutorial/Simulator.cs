@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ant;
 
 namespace AntSimulator {
 	//The Parent class of the ant simulation.  
@@ -13,11 +12,11 @@ namespace AntSimulator {
 		private bool running;
 		private bool paused;
 
-		private Colony.Colony colony;
+		private World world;
 
 		public int Run( ) {
 			int passes = 0;
-			colony = new Colony.Colony( );
+			world = new World();
 			running = true;
 			paused = false;
 			//Start the sim loop.  
@@ -36,7 +35,7 @@ namespace AntSimulator {
 
 		private void Tick( ) {
 			if ( !paused ) {
-				
+				world.OnTick
 			}
 			else {
 				Console.WriteLine( "Sim Paused, press a key to continue" );

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace World {
+namespace AntSimulator {
 
 	class World {
-		private List<Colony.Colony> colonies;
+		private List<Colony> colonies;
 		private bool alive;
 
 		public bool Alive { get { return alive; } }
-		public List<Colony.Colony> Colonies { get { return colonies; } }
+		public List<Colony> Colonies { get { return colonies; } }
 
 
 		public void OnTick( ) {
@@ -23,10 +23,10 @@ namespace World {
 
 			else {
 				//List for Colonies that have died, and need to be removed.
-				List<Colony.Colony> removeUs = new List<Colony.Colony>();
+				List<Colony> removeUs = new List<Colony>();
 
 				//Check to see if each colony is alive, if not add it to remove us.
-				foreach ( Colony.Colony c in colonies ) {
+				foreach ( Colony c in colonies ) {
 					if ( !c.Alive ) {
 						removeUs.Add( c );
 					}
@@ -36,7 +36,7 @@ namespace World {
 					}
 				}
 				//finally remove each dead colony from colonies.
-				foreach ( Colony.Colony c in removeUs ) {
+				foreach ( Colony c in removeUs ) {
 					colonies.Remove( c );
 				}
 			}

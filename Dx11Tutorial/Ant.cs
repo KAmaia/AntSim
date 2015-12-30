@@ -4,25 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ant {
+namespace AntSimulator {
 	class Ant {
 		private float hunger; //Huger grows from 0 to 1.0.  When it hits 1.0f ant starts taking damage.
 		private float health; //Health starts at 1.0f and is reduced to 0.0f, ant dies.
 		private bool alive;
-		private Colony.Colony colony;
+		private Colony colony;
 
 		public float Hunger { get { return hunger; } }
 		public float Health { get { return health; } }
 		public bool Alive { get { return alive; } }
 
-		public Colony.Colony Colony { get { return colony; } }
+		public Colony Colony { get { return colony; } }
 
 
 		/// <summary>
 		/// Ant Constructor.
 		/// </summary>
 		/// <param name="colony"> The Colony that owns this ant</param>
-		public Ant( Colony.Colony colony ) {
+		public Ant( Colony colony ) {
 			this.colony = colony;
 			alive = true;
 			health = 1.0f;
