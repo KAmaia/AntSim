@@ -19,7 +19,7 @@ namespace AntSimulator {
 			alive = true;
 			ants = new List<Ant>( );
 			GenerateAnts( );
-		
+
 		}
 
 
@@ -36,36 +36,31 @@ namespace AntSimulator {
 
 
 		public void OnTick( ) {
-			//Check to make sure the colony still has ants.  
-			//If not, set the colony as dead.
-			if ( ants.Count == 0 ) {
-				alive = false;
+			alive = ants.Count > 0;
+			//List of ants to remove from the queue.
+			List<Ant> removeUs = new List<Ant>();
+			//do Each ant level update first.
+			//this means that an ant that is moving will escape any untoward
+			//consequences from higher level updates.  
+			foreach ( Ant a in ants ) {
+				//First check to see if the ant is alive
+				if ( a.Alive ) {
+					a.OnTick( );
+
+				}
+				//If not move it to removeUs
+				else {
+
+					removeUs.Add( a );
+				}
 			}
-			else {
-				//List of ants to remove from the queue.
-				List<Ant> removeUs = new List<Ant>();
-				//do Each ant level update first.
-				//this means that an ant that is moving will escape any untoward
-				//consequences from higher level updates.  
-				foreach ( Ant a in ants ) {
-					//First check to see if the ant is alive
-					if ( a.Alive ) {
-						a.OnTick( );
-
-					}
-					//If not move it to removeUs
-					else {
-
-						removeUs.Add( a );
-					}
-				}
-				//And finally, remove the dead ants from ants.
-				foreach ( Ant a in removeUs ) {
-					Console.WriteLine( "Removing ant from ants" );
-					ants.Remove( a );
-				}
+			//And finally, remove the dead ants from ants.
+			foreach ( Ant a in removeUs ) {
+				Console.WriteLine( "Removing ant from ants" );
+				ants.Remove( a );
 			}
 		}
 	}
-
 }
+
+
