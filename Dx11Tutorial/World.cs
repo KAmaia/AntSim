@@ -13,7 +13,7 @@ namespace AntSimulator {
 		public bool Alive { get { return alive; } }
 		public List<Colony> Colonies { get { return colonies; } }
 
-		public World( ) {
+		private World( ) {
 			colonies = new List<Colony>( );
 			colonies.Add( new Colony( ) );
 		}
@@ -43,5 +43,17 @@ namespace AntSimulator {
 			}
 		}
 	}
-}
 
+	class WorldGenerator {
+		private World world;
+		private int maxColonies = 1;
+		private int passes = 1;
+
+		public WorldGenerator( ) {
+
+		}
+
+
+	}
+
+}
