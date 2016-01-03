@@ -16,7 +16,7 @@ namespace AntSimulator {
 
 		public int Run( ) {			
 			int passes = 0;
-			world = new WorldGenerator.GenerateWorld( );
+			world = new WorldGenerator().GenerateWorld( );
 			running = true;
 			paused = false;
 			//Start the sim loop.  
