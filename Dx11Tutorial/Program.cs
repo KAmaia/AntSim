@@ -13,6 +13,8 @@ namespace AntSimulator {
 			sim = new Simulator( );
 			sim.Run( );
 
+			
+
 			//Everything is done running.  Pause until the user hits a key.  
 			//This will go away with graphics.
 			Console.WriteLine( "Press Any Key To Exit" );
