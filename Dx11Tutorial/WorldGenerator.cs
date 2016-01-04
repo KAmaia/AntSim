@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace AntSimulator {
 	class WorldGenerator {
 		private World world;
-		private int maxColonies = 1;
 		private int passes = 1;
 
 		private Cell[, ,] cells;
@@ -16,12 +15,14 @@ namespace AntSimulator {
 
 		}
 
+		//TODO: This function is going to need some help.  Right now it's just going to make a world with dirt.
 		public World GenerateWorld( ) {
 			cells = generateCells( 10, 10, 10 );
 			World w = new World(cells);
 			return w;
 
 		}
+
 		//Size X: Width
 		//Size Y: Depth
 		//Size Z: Height
@@ -34,7 +35,7 @@ namespace AntSimulator {
 					//and fill in the row.
 					for ( int x = 0; x < sizeX; x++ ) {
 						Cell c = new Cell();
-						c.CellType = CellType.Dirt;
+						c.CellType = CellType.NormalDirt;
 					}
 				}
 			}
