@@ -9,13 +9,17 @@ namespace AntSimulator {
 	class Colony {
 		private List<Ant> ants;
 		private bool alive;
+		private World world;
 
 		public bool Alive { get { return alive; } }
 		public List<Ant> Ants { get { return ants; } }
 
+		public World World { get { return world; } }
+
 
 		//Colony Constructor
-		public Colony( ) {
+		public Colony(World w ) {
+			world = w;
 			alive = true;
 			ants = new List<Ant>( );
 			GenerateAnts( );

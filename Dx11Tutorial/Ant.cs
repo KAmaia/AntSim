@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace AntSimulator {
 	class Ant {
-		private float hunger;	//Huger grows from 0 to 1.0.  When it hits 1.0f ant starts taking damage.
-		private float health;	//Health starts at 1.0f and is reduced to 0.0f, ant dies.
-		private bool alive;		//Pretty self commenting.  Is the ant Alive?
-		private Colony colony;	//The colony that owns the Ant
+		private float hunger;			//Huger grows from 0 to 1.0.  When it hits 1.0f ant starts taking damage.
+		private float health;			//Health starts at 1.0f and is reduced to 0.0f, ant dies.
+		private bool alive;				//Pretty self commenting.  Is the ant Alive?
+		private Colony colony;			//The colony that owns the Ant
+		private World world;			//Reference to the world.
+		private CellAddress currAddress;	//The address this ant is currently at.
 
 		public float Hunger { get { return hunger; } }
 		public float Health { get { return health; } }
@@ -23,6 +25,7 @@ namespace AntSimulator {
 		/// <param name="colony"> The Colony that owns this ant</param>
 		public Ant( Colony colony ) {
 			this.colony = colony;
+			world = colony.World;
 			alive = true;
 			health = 1.0f; //Set health to 100%
 			hunger = 0.0f; //Set hunger to 0%
@@ -52,6 +55,12 @@ namespace AntSimulator {
 			if ( hunger >= 1.0f ) {
 				hunger = 1.0f;
 				health -= .001f;
+			}
+		}
+		private void DigCell(CellAddress a ) {
+			//first check to see if a is a valid cell
+			
+				
 			}
 		}
 	}

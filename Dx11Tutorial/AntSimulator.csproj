@@ -44,15 +44,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ant.cs" />
-    <Compile Include="Cell.cs" />
-    <Compile Include="CellAddress.cs" />
-    <Compile Include="CellType.cs" />
+    <Compile Include="World\Cell.cs" />
+    <Compile Include="World\CellAddress.cs" />
+    <Compile Include="World\CellType.cs" />
     <Compile Include="Colony.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Simulator.cs" />
-    <Compile Include="World.cs" />
-    <Compile Include="WorldGenerator.cs" />
+    <Compile Include="Utilities\BoundsChecker.cs" />
+    <Compile Include="World\World.cs" />
+    <Compile Include="World\WorldGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

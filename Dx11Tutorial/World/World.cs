@@ -6,23 +6,29 @@ using System.Threading.Tasks;
 
 namespace AntSimulator {
 
-	class World {
-		private Dictionary<CellAddress, Cell> cells;							//Our Cells.  The things that make up the world.
-		private List<Colony> colonies;					//A list to hold our colonies.
-		private bool alive;								//Is the World Alive?  (If no colonies, then NO!)
+	class World {                              //Our Cells.  The things that make up the world.
+		private List<Colony> colonies;                         //A list to hold our colonies.
+		private bool alive;                                    //Is the World Alive?  (If no colonies, then NO!)
+		private Cell[ ,,] cells;
+
+		private int xSize;				//Size from Front to Back
+		private int ySize;				//Size from Left to Right
+		private int zSize;				//Size from Top to Bottom
 
 		public bool Alive { get { return alive; } }
 		public List<Colony> Colonies { get { return colonies; } }
-		public Dictionary<CellAddress,Cell> Cells { get { return cells; } }
+		public Cell[ ,,] Cells { get { return cells; }set { cells = value; } }
+
+		public int ZSize { get { return zSize; } set { zSize = value; } }
+		public int XSize { get { return xSize; } set { xSize = value; } }
+		public int YSize { get { return ySize; } set { ySize = value; } }
+
 
 		/// <summary>
-		/// World Constructor.
+		/// World Constructor
 		/// </summary>
-		/// <param name="cells">The Dictionary Created By Our World Generator</param>
-		public World( Dictionary<CellAddress, Cell> cells ) {
-			this.cells = cells;
-			colonies = new List<Colony>( );
-			colonies.Add( new Colony( ) );
+		/// 
+		public World( ) {
 		}
 
 		/// <summary>
@@ -30,8 +36,8 @@ namespace AntSimulator {
 		/// </summary>
 		/// <param name="delta">Time that has passed since the last tick</param>
 		public void OnTick( long delta ) {
-			
-			alive = colonies.Count > 0;					//Check to see if we still have colonies.
+
+			alive = colonies.Count > 0;                       //Check to see if we still have colonies.
 			List<Colony> removeUs = new List<Colony>();       //List for Colonies that have died, and need to be removed.
 
 			foreach ( Colony c in colonies ) {                //Check to see if each colony is alive, if so, tell it to Tick;
@@ -49,7 +55,13 @@ namespace AntSimulator {
 
 			}
 		}
+
+	
+
+		
+
 	}
+}
 
 
 
