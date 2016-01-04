@@ -44,11 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ant.cs" />
+    <Compile Include="Cell.cs" />
+    <Compile Include="CellType.cs" />
     <Compile Include="Colony.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Simulator.cs" />
     <Compile Include="World.cs" />
+    <Compile Include="WorldGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

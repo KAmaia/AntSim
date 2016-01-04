@@ -16,28 +16,44 @@ namespace AntSimulator {
 		private World world;
 
 		public int Run( ) {
+			//How many passes did the simulation make.  (Should rename to Ticks(), however, as it's just a variable I haven't.
 			int passes = 0;
+
+			//Skip instantiating a new world and GenerateWorld() instead.
 			world = new WorldGenerator( ).GenerateWorld( );
+
+			//Is the system running, why yes, yes it is.  No, it's not paused either.
 			running = true;
 			paused = false;
+
 			//start delta time at 0
 			long delta = 0;
 			//get the current timestamp, pre-gameloop
 			long lastTime = Stopwatch.GetTimestamp();
+
 			//Start the sim loop.  
 			while ( running ) {
 				//get a new timestamp for when we re/start the loop
 				long now = Stopwatch.GetTimestamp();
 				//delta time equals now minus last time
 				delta = ( now - lastTime );
+				//we've made a pass, increment passes.
+				passes++;
+				//debug only.  Writing delta time to console.
+				Console.WriteLine( delta );
+
+				//Ahh C# made something easy!  
+				//Check if the user has hit a key if so, pass that to HandleInput()
+				if ( Console.KeyAvailable ) {
+					HandleInput( Console.ReadKey( ) );
+
+				}
 				//pass a reference to delta into Tick();
 				Tick( ref delta );
-				passes++;
-				Console.WriteLine( delta );
-				if ( Console.KeyAvailable ) {
-					HandleInput( Console.ReadKey( ) );	
-					
-				}
+
+				//TODO: Add a renderer of some kind and render here.
+
+				//update last time to the time we're exiting the loop.
 				lastTime = now;
 			}
 
@@ -58,21 +74,27 @@ namespace AntSimulator {
 
 			}
 			else {
-				Console.WriteLine( "Sim Paused, press a key to continue" );
-				Console.ReadLine( );
-				paused = false;
+				//TODO: Display Menu here
 			}
 		}
 		/// <summary>
 		/// Handles user input.
 		/// </summary>
 		/// <param name="input">ConsoleKeyInfo corresponding to user key press</param>
-		private void HandleInput(ConsoleKeyInfo input ) {
+		private void HandleInput( ConsoleKeyInfo input ) {
+
 			switch ( input.Key ) {
+				case ConsoleKey.Spacebar:
+					TogglePaused( );
+					break;
 				case ConsoleKey.Escape:
 					running = false;
 					break;
 			}
+
+		}
+		private void TogglePaused( ) {
+			paused = !paused;
 		}
 	}
 }
