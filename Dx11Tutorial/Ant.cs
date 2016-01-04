@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using AntSimulator.Utilities;
+
 namespace AntSimulator {
 	class Ant {
-		private float hunger;			//Huger grows from 0 to 1.0.  When it hits 1.0f ant starts taking damage.
-		private float health;			//Health starts at 1.0f and is reduced to 0.0f, ant dies.
-		private bool alive;				//Pretty self commenting.  Is the ant Alive?
-		private Colony colony;			//The colony that owns the Ant
-		private World world;			//Reference to the world.
-		private CellAddress currAddress;	//The address this ant is currently at.
+		private float hunger;              //Huger grows from 0 to 1.0.  When it hits 1.0f ant starts taking damage.
+		private float health;              //Health starts at 1.0f and is reduced to 0.0f, ant dies.
+		private bool alive;                //Pretty self commenting.  Is the ant Alive?
+		private Colony colony;             //The colony that owns the Ant
+		private World world;               //Reference to the world.
+		private CellAddress currAddress;   //The address this ant is currently at.
 
 		public float Hunger { get { return hunger; } }
 		public float Health { get { return health; } }
@@ -57,11 +59,12 @@ namespace AntSimulator {
 				health -= .001f;
 			}
 		}
-		private void DigCell(CellAddress a ) {
+		private void DigCell( CellAddress a ) {
 			//first check to see if a is a valid cell
-			
-				
-			}
+			Utilities.BoundsChecker.check3dBounds( a, new Tuple<int, int, int>( world.ZSize, world.XSize, world.YSize ) );
+
+
 		}
 	}
 }
+

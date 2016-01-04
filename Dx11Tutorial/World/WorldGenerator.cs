@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using AntSimulator.Utilities;
+
 namespace AntSimulator {
 	class WorldGenerator {
 		private World world;
@@ -25,11 +27,11 @@ namespace AntSimulator {
 			for ( int z = 0; z < upDownSize; z++ ) {
 				for ( int x = 0; x < frontBackSize; x++ ) {
 					for ( int y = 0; y < leftRightSize; y++ ) {
-						cells[z, x, y] = new Cell( CellType.NormalDirt, new CellAddress( x, y, z ) );
+						cells[z, x, y] = new Cell( CellType.NormalDirt, new CellAddress( z, x, y ) );
 					}
 				}
 			}
-			w.Cells = cells ;
+			w.Cells = cells;
 			return w;
 		}
 

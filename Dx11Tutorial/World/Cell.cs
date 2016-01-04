@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using AntSimulator.Utilities;
+
 namespace AntSimulator {
 	class Cell {
 		private CellType cellType;		//So, all the pertinent information is stored in the CellType class.  Makes dealing with Cells easier.

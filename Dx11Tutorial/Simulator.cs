@@ -20,7 +20,7 @@ namespace AntSimulator {
 			int passes = 0;
 
 			//Skip instantiating a new world and GenerateWorld() instead.
-			world = new WorldGenerator( ).GenerateWorld( );
+			world = new WorldGenerator( ).GenerateWorld( 10, 10, 10 );
 
 			//Is the system running, why yes, yes it is.  No, it's not paused either.
 			running = true;
