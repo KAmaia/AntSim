@@ -35,7 +35,7 @@ namespace AntSimulator {
 
 
 
-		public void OnTick(long delta ) {
+		public void OnTick( long delta ) {
 			alive = ants.Count > 0;
 			//List of ants to remove from the queue.
 			List<Ant> removeUs = new List<Ant>();
@@ -45,7 +45,7 @@ namespace AntSimulator {
 			foreach ( Ant a in ants ) {
 				//First check to see if the ant is alive
 				if ( a.Alive ) {
-					a.OnTick(delta );
+					a.OnTick( delta );
 
 				}
 				//If not move it to removeUs

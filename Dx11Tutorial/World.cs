@@ -13,15 +13,15 @@ namespace AntSimulator {
 
 		public bool Alive { get { return alive; } }
 		public List<Colony> Colonies { get { return colonies; } }
-		public Cell[,,] Cells { get { return cells; } }
+		public Cell[ ,,] Cells { get { return cells; } }
 
-		internal World(Cell[,,]cells ) {
+		internal World( Cell[ ,,] cells ) {
 			this.cells = cells;
 			colonies = new List<Colony>( );
 			colonies.Add( new Colony( ) );
 		}
 
-		public void OnTick( long delta) {
+		public void OnTick( long delta ) {
 			//Check to see if we still have colonies.
 			//If not, world dies.
 			alive = colonies.Count > 0;
@@ -34,7 +34,7 @@ namespace AntSimulator {
 			//if so, tell it to Tick;
 			foreach ( Colony c in colonies ) {
 				if ( c.Alive ) {
-					c.OnTick( delta);
+					c.OnTick( delta );
 				}
 				//if the colony isn't alive, add it to Remove Us
 				else {
@@ -63,7 +63,7 @@ namespace AntSimulator {
 			cells = generateCells( 10, 10, 10 );
 			World w = new World(cells);
 			return w;
-			
+
 		}
 		//Size X: Width
 		//Size Y: Depth

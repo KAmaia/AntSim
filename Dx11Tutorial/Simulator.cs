@@ -20,19 +20,23 @@ namespace AntSimulator {
 			world = new WorldGenerator( ).GenerateWorld( );
 			running = true;
 			paused = false;
-		
+			//start delta time at 0
 			long delta = 0;
+			//get the current timestamp, pre-gameloop
 			long lastTime = Stopwatch.GetTimestamp();
 			//Start the sim loop.  
 			while ( running ) {
+				//get a new timestamp for when we re/start the loop
 				long now = Stopwatch.GetTimestamp();
-				delta += ( now - lastTime );
-				Tick(delta );
+				//delta time equals now minus last time
+				delta = ( now - lastTime );
+				//pass a reference to delta into Tick();
+				Tick( ref delta );
 				passes++;
-				Console.WriteLine( passes );
-				if ( passes >= 100 ) {
-					passes = 0;
-					paused = true;
+				Console.WriteLine( delta );
+				if ( Console.KeyAvailable ) {
+					HandleInput( Console.ReadKey( ) );	
+					
 				}
 				lastTime = now;
 			}
@@ -40,14 +44,34 @@ namespace AntSimulator {
 			return 0;
 		}
 
-		private void Tick(long delta) {
+		/// <summary>
+		/// Where all the updates happen.  
+		/// Updates happen in order of:
+		/// -Ants
+		/// --Colonies
+		/// ---World
+		/// </summary>
+		/// <param name="delta">delta time between frames in millis</param>
+		private void Tick( ref long delta ) {
 			if ( !paused ) {
-				world.OnTick(delta );
+				world.OnTick( delta );
+
 			}
 			else {
 				Console.WriteLine( "Sim Paused, press a key to continue" );
 				Console.ReadLine( );
 				paused = false;
+			}
+		}
+		/// <summary>
+		/// Handles user input.
+		/// </summary>
+		/// <param name="input">ConsoleKeyInfo corresponding to user key press</param>
+		private void HandleInput(ConsoleKeyInfo input ) {
+			switch ( input.Key ) {
+				case ConsoleKey.Escape:
+					running = false;
+					break;
 			}
 		}
 	}

@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace AntSimulator {
 	class Ant {
-		private float hunger; //Huger grows from 0 to 1.0.  When it hits 1.0f ant starts taking damage.
-		private float health; //Health starts at 1.0f and is reduced to 0.0f, ant dies.
-		private bool alive;
-		private Colony colony;
+		private float hunger;	//Huger grows from 0 to 1.0.  When it hits 1.0f ant starts taking damage.
+		private float health;	//Health starts at 1.0f and is reduced to 0.0f, ant dies.
+		private bool alive;		//Pretty self commenting.  Is the ant Alive?
+		private Colony colony;	//The colony that owns the Ant
 
 		public float Hunger { get { return hunger; } }
 		public float Health { get { return health; } }
 		public bool Alive { get { return alive; } }
 
 		public Colony Colony { get { return colony; } }
-
 
 		/// <summary>
 		/// Ant Constructor.
@@ -25,18 +24,21 @@ namespace AntSimulator {
 		public Ant( Colony colony ) {
 			this.colony = colony;
 			alive = true;
-			health = 1.0f;
-			hunger = 0.0f;
+			health = 1.0f; //Set health to 100%
+			hunger = 0.0f; //Set hunger to 0%
 
 		}
 		/// <summary>
-		/// Handles the game Tick
+		/// Handles Sim Ticks()
 		/// </summary>
-		public void OnTick(long delta ) {
+		/// <param name="delta">The amount of time that has passed since the last update.</param>
+		public void OnTick( long delta ) {
 			AddHunger( );
 			alive = health > 0;
 
+			//Debug text message to print.
 			String tickMessage = this.ToString() + " is Ticking\nHunger=" + hunger + "\nHealth=" + health +"\n";
+
 			Console.Write( tickMessage );
 
 		}
