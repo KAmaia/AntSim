@@ -5,17 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace AntSimulator {
 	//The Parent class of the ant simulation.  
 	//Handles stuff(tm).
 	class Simulator {
-
+		
 		private bool running;
 		private bool paused;
 
 		private World world;
 
+		
+
 		public int Run( ) {
+			
+
 			//How many passes did the simulation make.  (Should rename to Ticks(), however, as it's just a variable I haven't.
 			int passes = 0;
 
@@ -59,6 +65,8 @@ namespace AntSimulator {
 
 			return 0;
 		}
+		
+
 
 		/// <summary>
 		/// Where all the updates happen.  
@@ -77,6 +85,7 @@ namespace AntSimulator {
 				//TODO: Display Menu here
 			}
 		}
+
 		/// <summary>
 		/// Handles user input.
 		/// </summary>
@@ -93,6 +102,7 @@ namespace AntSimulator {
 			}
 
 		}
+
 		private void TogglePaused( ) {
 			paused = !paused;
 		}
