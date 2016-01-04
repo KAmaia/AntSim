@@ -15,14 +15,13 @@ namespace AntSimulator {
 		public static CellType HeavyDirt { get; } = new CellType( false, true, 100.0f, "Thick Dirt" );
 		public static CellType Tunnel { get; } = new CellType( true, false, 0.0f, "Tunnel" );
 
-		private bool passable;				//Can we pass through this cell?
-		private bool diggable;				//Can we dig this cell?
-		private float density;				//Number of particles in the cell.  (Used for digging).
-		private string cellTypeString;		//Used for debugging purposes.  We can remove this later.
+		private bool passable;                  //Can we pass through this cell?
+		private bool diggable;                  //Can we dig this cell?
+		private float density;                  //Number of particles in the cell.  (Used for digging).
+		private string cellTypeString;          //Used for debugging purposes.  We can remove this later.
 
-		private const float volume = 1.0f;		//1.0 cm^3 This never changes, and may actually never be used.
+		private const float volume = 1.0f;      //1.0 cm^3 This never changes, and may actually never be used.
 
-		private Tuple<int, int, int> address;	//The address of the cell.  Why, just to keep track. =)
 
 
 
@@ -32,10 +31,7 @@ namespace AntSimulator {
 
 		public string CellTypeString { get { return cellTypeString; } }
 
-		public Tuple<int, int, int> Address {
-			get { return address; }
-			set { address = value; }
-		}
+
 
 		private CellType( bool passable, bool diggable, float density, string cellTypeString ) {
 			this.passable = passable;

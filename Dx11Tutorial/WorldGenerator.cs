@@ -9,7 +9,7 @@ namespace AntSimulator {
 		private World world;
 		private int passes = 1;
 
-		private Cell[, ,] cells;
+		private Dictionary<CellAddress, Cell> cells;
 
 		public WorldGenerator( ) {
 
@@ -17,7 +17,7 @@ namespace AntSimulator {
 
 		//TODO: This function is going to need some help.  Right now it's just going to make a world with dirt.
 		public World GenerateWorld( ) {
-			cells = generateCells( 10, 10, 10 );
+			cells = new Dictionary<CellAddress, Cell>( );
 			World w = new World(cells);
 			return w;
 
@@ -26,21 +26,18 @@ namespace AntSimulator {
 		//Size X: Width
 		//Size Y: Depth
 		//Size Z: Height
-		private Cell[ ,,] generateCells( int sizeX, int sizeY, int sizeZ ) {
-			cells = new Cell[sizeZ, sizeX, sizeY];
+		private void generateCells( int sizeX, int sizeY, int sizeZ ) {
 			//First fill in the Z layers
 			for ( int z = 0; z < sizeZ; z++ ) {
-				//Then Start at the furthest back corner
 				for ( int y = 0; y < sizeY; y++ ) {
-					//and fill in the row.
 					for ( int x = 0; x < sizeX; x++ ) {
-						Cell c = new Cell();
-						c.CellType = CellType.NormalDirt;
+						CellAddress address = new CellAddress(x,y,z);
+						cells.Add( address, new Cell( CellType.NormalDirt, address ) );
 					}
 				}
 			}
-			return cells;
 		}
-
 	}
+
 }
+

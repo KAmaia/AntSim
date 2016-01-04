@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace AntSimulator {
 	class Cell {
-		private CellType cellType;
+		private CellAddress address;
+		private CellType cellType; //So, all the pertinent information is stored in the CellType class.  Makes dealing with Cells easier.
+
+		public CellAddress Address { get { return address; } }
 		public CellType CellType { get { return cellType; } set { cellType = value; } }
 
+
+		public Cell(CellType t, CellAddress a ) {
+			address = a;
+			cellType = t;
+		}
 	}
 }

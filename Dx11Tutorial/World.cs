@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 namespace AntSimulator {
 
 	class World {
-		private Cell[,,] cells;							//Our Cells.  The things that make up the world.
+		private Dictionary<CellAddress, Cell> cells;							//Our Cells.  The things that make up the world.
 		private List<Colony> colonies;					//A list to hold our colonies.
 		private bool alive;								//Is the World Alive?  (If no colonies, then NO!)
 
 		public bool Alive { get { return alive; } }
 		public List<Colony> Colonies { get { return colonies; } }
-		public Cell[ ,,] Cells { get { return cells; } }
+		public Dictionary<CellAddress,Cell> Cells { get { return cells; } }
 
 		/// <summary>
 		/// World Constructor.
 		/// </summary>
-		/// <param name="cells">The Cell Array Created By Our World Generator</param>
-		public World( Cell[ ,,] cells ) {
+		/// <param name="cells">The Dictionary Created By Our World Generator</param>
+		public World( Dictionary<CellAddress, Cell> cells ) {
 			this.cells = cells;
 			colonies = new List<Colony>( );
 			colonies.Add( new Colony( ) );

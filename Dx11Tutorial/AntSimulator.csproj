@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Ant.cs" />
     <Compile Include="Cell.cs" />
+    <Compile Include="CellAddress.cs" />
     <Compile Include="CellType.cs" />
     <Compile Include="Colony.cs" />
     <Compile Include="Program.cs" />
