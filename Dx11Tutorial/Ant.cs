@@ -32,7 +32,7 @@ namespace AntSimulator {
 		/// <summary>
 		/// Handles the game Tick
 		/// </summary>
-		public void OnTick( ) {
+		public void OnTick(long delta ) {
 			AddHunger( );
 			alive = health > 0;
 

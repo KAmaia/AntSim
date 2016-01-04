@@ -21,7 +21,7 @@ namespace AntSimulator {
 			colonies.Add( new Colony( ) );
 		}
 
-		public void OnTick( ) {
+		public void OnTick( long delta) {
 			//Check to see if we still have colonies.
 			//If not, world dies.
 			alive = colonies.Count > 0;
@@ -34,7 +34,7 @@ namespace AntSimulator {
 			//if so, tell it to Tick;
 			foreach ( Colony c in colonies ) {
 				if ( c.Alive ) {
-					c.OnTick( );
+					c.OnTick( delta);
 				}
 				//if the colony isn't alive, add it to Remove Us
 				else {
