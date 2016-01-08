@@ -11,7 +11,7 @@ namespace AntSimulator {
 		static void Main( string[ ] args ) {
 			//Start the Simulator.
 			sim = new Simulator( );
-			sim.Run( );
+			sim.Run();
 
 			
 

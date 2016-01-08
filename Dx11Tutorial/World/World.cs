@@ -29,13 +29,14 @@ namespace AntSimulator {
 		/// </summary>
 		/// 
 		public World( ) {
+			colonies = new List<Colony>( );
 		}
 
 		/// <summary>
 		/// Update the world.  
 		/// </summary>
 		/// <param name="delta">Time that has passed since the last tick</param>
-		public void OnTick( long delta ) {
+		public void OnTick( ) {
 
 			alive = colonies.Count > 0;                       //Check to see if we still have colonies.
 			List<Colony> removeUs = new List<Colony>();       //List for Colonies that have died, and need to be removed.
@@ -43,7 +44,7 @@ namespace AntSimulator {
 			foreach ( Colony c in colonies ) {                //Check to see if each colony is alive, if so, tell it to Tick;
 
 				if ( c.Alive ) {
-					c.OnTick( delta );
+					c.OnTick();
 				}
 				else {
 					removeUs.Add( c );                      //if the colony isn't alive, add it to Remove Us

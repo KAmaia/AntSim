@@ -17,10 +17,14 @@ namespace AntSimulator {
 
 		private World world;
 
+		public Simulator(  ) {
 		
+		}
 
 		public int Run( ) {
-			
+
+			Stopwatch sw = new Stopwatch();
+		
 
 			//How many passes did the simulation make.  (Should rename to Ticks(), however, as it's just a variable I haven't.
 			int passes = 0;
@@ -35,17 +39,19 @@ namespace AntSimulator {
 			//start delta time at 0
 			long delta = 0;
 			//get the current timestamp, pre-gameloop
-			long lastTime = Stopwatch.GetTimestamp();
-
+			long lastTime = sw.ElapsedMilliseconds;
+			double desiredTPS = 1 / 60; 
+			sw.Start( );
 			//Start the sim loop.  
 			while ( running ) {
 				//get a new timestamp for when we re/start the loop
-				long now = Stopwatch.GetTimestamp();
+				long now = sw.ElapsedMilliseconds;
 				//delta time equals now minus last time
-				delta = ( now - lastTime );
+				delta = ( now - lastTime ) / 1000;
 				//we've made a pass, increment passes.
 				passes++;
 				//debug only.  Writing delta time to console.
+				
 				Console.WriteLine( delta );
 
 				//Ahh C# made something easy!  
@@ -54,8 +60,11 @@ namespace AntSimulator {
 					HandleInput( Console.ReadKey( ) );
 
 				}
+
+				//Lock tick rate to 60 tps.
+				if(delta >= 1 / desiredTPS ) { }
 				//pass a reference to delta into Tick();
-				Tick( ref delta );
+				Tick(  );
 
 				//TODO: Add a renderer of some kind and render here.
 
@@ -74,11 +83,12 @@ namespace AntSimulator {
 		/// -Ants
 		/// --Colonies
 		/// ---World
+		///		->foreach(colony c in colonies){c.onTick();}
 		/// </summary>
 		/// <param name="delta">delta time between frames in millis</param>
-		private void Tick( ref long delta ) {
+		private void Tick(  ) {
 			if ( !paused ) {
-				world.OnTick( delta );
+				world.OnTick(  );
 
 			}
 			else {

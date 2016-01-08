@@ -31,8 +31,14 @@ namespace AntSimulator {
 					}
 				}
 			}
+
 			w.Cells = cells;
+			addColony( w );
 			return w;
+		}
+		//Add a test colony to world;
+		private void addColony(World w ) {
+			w.Colonies.Add( new Colony(w ) );
 		}
 
 	}

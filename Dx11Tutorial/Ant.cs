@@ -37,15 +37,15 @@ namespace AntSimulator {
 		/// Handles Sim Ticks()
 		/// </summary>
 		/// <param name="delta">The amount of time that has passed since the last update.</param>
-		public void OnTick( long delta ) {
+		public void OnTick( ) {
 			AddHunger( );
 			alive = health > 0;
-
+			/*
 			//Debug text message to print.
 			String tickMessage = this.ToString() + " is Ticking\nHunger=" + hunger + "\nHealth=" + health +"\n";
 
 			Console.Write( tickMessage );
-
+			*/
 		}
 		/// <summary>
 		/// Add's .001 to ant's hunger level.
@@ -55,9 +55,14 @@ namespace AntSimulator {
 			//if hunger is 100% or greater, leave it 100%
 			//and subtract health.
 			if ( hunger >= 1.0f ) {
-				hunger = 1.0f;
+				/*hunger = 1.0f;
 				health -= .001f;
+				*/
+				Eat( );
 			}
+		}
+		private void Eat( ) {
+			hunger -= .001f;
 		}
 		private void DigCell( CellAddress a ) {
 			//first check to see if a is a valid cell
