@@ -45,11 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ant.cs" />
+    <Compile Include="Ants\Ant.cs" />
     <Compile Include="World\Cell.cs" />
     <Compile Include="Utilities\CellAddress.cs" />
     <Compile Include="World\CellType.cs" />
-    <Compile Include="Colony.cs" />
+    <Compile Include="Ants\Colony.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Simulator.cs" />

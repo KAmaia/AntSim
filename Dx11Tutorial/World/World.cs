@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using AntSimulator.Ants;
+
 namespace AntSimulator {
 
-	class World {                              //Our Cells.  The things that make up the world.
+	class World {                             
 		private List<Colony> colonies;                         //A list to hold our colonies.
 		private bool alive;                                    //Is the World Alive?  (If no colonies, then NO!)
-		private Cell[ ,,] cells;
+		private Cell[ ,,] cells;                               //Our Cells.  The things that make up the world.
 
 		private int xSize;				//Size from Front to Back
 		private int ySize;				//Size from Left to Right

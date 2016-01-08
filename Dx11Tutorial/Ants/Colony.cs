@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace AntSimulator {
+namespace AntSimulator.Ants {
 	class Colony {
 		private List<Ant> ants;
 		private bool alive;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using AntSimulator.Utilities;
 
-namespace AntSimulator {
+namespace AntSimulator.Ants {
 	class Ant {
 		private float hunger;              //Huger grows from 0 to 1.0.  When it hits 1.0f ant starts taking damage.
 		private float health;              //Health starts at 1.0f and is reduced to 0.0f, ant dies.
