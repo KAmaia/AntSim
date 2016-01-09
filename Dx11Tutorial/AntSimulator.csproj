@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ants\Ant.cs" />
+    <Compile Include="Ants\AntMind.cs" />
+    <Compile Include="Ants\ColonyMind.cs" />
+    <Compile Include="Pheromones\Interface1.cs" />
     <Compile Include="World\Cell.cs" />
     <Compile Include="Utilities\CellAddress.cs" />
     <Compile Include="World\CellType.cs" />

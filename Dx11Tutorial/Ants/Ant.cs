@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AntSimulator.Utilities;
+using AntSimulator.Pheromones;
 
 namespace AntSimulator.Ants {
 	class Ant {
@@ -14,6 +15,7 @@ namespace AntSimulator.Ants {
 		private Colony colony;             //The colony that owns the Ant
 		private World world;               //Reference to the world.
 		private CellAddress currAddress;   //The address this ant is currently at.
+		private AntMind am;
 
 		public float Hunger { get { return hunger; } }
 		public float Health { get { return health; } }
@@ -68,6 +70,9 @@ namespace AntSimulator.Ants {
 			//first check to see if a is a valid cell
 			Utilities.BoundsChecker.check3dBounds( a, new Tuple<int, int, int>( world.ZSize, world.XSize, world.YSize ) );
 
+
+		}
+		private void LayPharomone(CellAddress a, Pheromone p ) {
 
 		}
 	}

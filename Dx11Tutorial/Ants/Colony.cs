@@ -10,7 +10,7 @@ namespace AntSimulator.Ants {
 		private List<Ant> ants;
 		private bool alive;
 		private World world;
-		
+		private  ColonyMind colonyMind;
 
 		public bool Alive { get { return alive; } }
 		public List<Ant> Ants { get { return ants; } }
@@ -19,7 +19,7 @@ namespace AntSimulator.Ants {
 
 
 		//Colony Constructor
-		public Colony(World w ) {
+		public Colony(ref World w ) {
 			world = w;
 			alive = true;
 			ants = new List<Ant>( );
