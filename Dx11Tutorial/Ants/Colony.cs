@@ -17,10 +17,15 @@ namespace AntSimulator.Ants {
 
 		public World World { get { return world; } }
 
+		public static float Food { get; internal set; }
+		public static float Space { get; internal set; }
+		public static float Eggs { get; internal set; }
+
 
 		//Colony Constructor
 		public Colony(ref World w ) {
 			world = w;
+			colonyMind = new ColonyMind( this );
 			alive = true;
 			ants = new List<Ant>( );
 			GenerateAnts( );
