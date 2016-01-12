@@ -15,7 +15,7 @@ namespace AntSimulator.Ants {
 		private Colony colony;             //The colony that owns the Ant
 		private World world;               //Reference to the world.
 		private CellAddress currAddress;   //The address this ant is currently at.
-		private AntMind am;
+		private AntMind am;                //Yay, the ant has a mind!
 
 		public float Hunger { get { return hunger; } }
 		public float Health { get { return health; } }
@@ -33,10 +33,10 @@ namespace AntSimulator.Ants {
 			alive = true;
 			health = 1.0f; //Set health to 100%
 			hunger = 0.0f; //Set hunger to 0%
-
+			am = new AntMind( this );
 		}
 		/// <summary>
-		/// Handles Sim Ticks()
+		/// Handles Sim Ticks
 		/// </summary>
 		/// <param name="delta">The amount of time that has passed since the last update.</param>
 		public void OnTick( ) {
@@ -48,6 +48,7 @@ namespace AntSimulator.Ants {
 
 			Console.Write( tickMessage );
 			*/
+			am.OnTick( );
 		}
 		/// <summary>
 		/// Add's .001 to ant's hunger level.
@@ -63,16 +64,23 @@ namespace AntSimulator.Ants {
 				Eat( );
 			}
 		}
+		/// <summary>
+		/// Feeds the ant
+		/// </summary>
 		private void Eat( ) {
 			hunger -= .001f;
 		}
+		/// <summary>
+		/// digs a cell
+		/// </summary>
+		/// <param name="a">The address of the cell to dig.</param>
 		private void DigCell( CellAddress a ) {
 			//first check to see if a is a valid cell
 			Utilities.BoundsChecker.check3dBounds( a, new Tuple<int, int, int>( world.ZSize, world.XSize, world.YSize ) );
 
 
 		}
-		private void LayPharomone(CellAddress a, Pheromone p ) {
+		private void LayPharomone( CellAddress a, Pheromone p ) {
 
 		}
 	}

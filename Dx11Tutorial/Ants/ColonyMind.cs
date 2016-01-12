@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
+using AntSimulator.Tasks;
 
 namespace AntSimulator.Ants {
 	class ColonyMind {
@@ -9,15 +12,20 @@ namespace AntSimulator.Ants {
 		private float desiredColonyEggs;
 		private float desiredColonyEggStatus;
 
-		private List<Job> AvailableJobs;
+		private List<ColonyTask> availableTasks;
 		private List<AntMind> AntMinds;
 
 		public ColonyMind( Colony c ) {
 			colony = c;
 		}
 
-
+		//TODO: Replace this method with a better one.  But first, we need to get job creation going, and actually figure out how to prioritze stuff.
 		public void OnTick( ) {
+
+
+
+
+			//FOR NOW...A simple decision tree.
 			if ( Colony.Food < desiredColonyFood ) {
 				CreateNewFoodJob( );
 			}
@@ -31,24 +39,35 @@ namespace AntSimulator.Ants {
 
 		}
 
+
+		/// <summary>
+		/// Handles task assignments.  
+		/// first it loops over tasks until it finds one !InProcess
+		/// then it looks for an idle AntMind to assign the task to.
+		/// The AntMind then either accepts or rejects the task(not implemented), toggling inProcess to true if the task is accepted.  
+		/// </summary>
 		private void HandleJobAssignation( ) {
-			int checks = 0;
-			int desiredChecks = 3;
-			while ( checks <= desiredChecks ) {
-				if ( AvailableJobs.Count == 0 ) {
+			//TODO: Clean this up a bit with LINQ.  
+			//TODO: Learn LINQ
+			//find each task that is not in process
+			foreach ( ColonyTask task in availableTasks ) {
+				//find each task that is not in process
+				if ( task.InProcess ) {
+					continue;
+				}
+				else {
+					//find the first ant that is idle
 					foreach ( AntMind am in AntMinds ) {
 						if ( am.Idle ) {
-							am.CurrentJob = AvailableJobs[0];
-							AvailableJobs.RemoveAt( 0 );
+							am.AddColonyTask( task );
+							break;
 						}
 					}
 				}
-				else {
-					break;
-				}
-				checks++;
 			}
 		}
+
+
 
 
 
