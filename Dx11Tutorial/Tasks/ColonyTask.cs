@@ -8,14 +8,13 @@ using AntSimulator.Ants;
 namespace AntSimulator.Tasks {
 	abstract class ColonyTask : ITask {
 
-		private TaskType type;          //The type of task this is.
-		private bool inProcess;       //Is This Job In Process.
+		protected TaskType type;           //The type of task this is.
+		protected bool inProcess;          //Is This Job In Process.
+		private bool assigned;             //Is this task assigned to an ant?
 
 		public TaskType Type { get { return type; } }
-		public bool InProcess { get { return inProcess; } set { inProcess = value; }}
-		
-
-		public abstract void giveToAntMind( AntMind am );
+		public bool InProcess { get { return inProcess; } }
+		public bool Assigned { get { return assigned; } set { assigned = value; } }
 	}
 
 }

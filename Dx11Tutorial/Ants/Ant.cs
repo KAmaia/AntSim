@@ -40,15 +40,14 @@ namespace AntSimulator.Ants {
 		/// </summary>
 		/// <param name="delta">The amount of time that has passed since the last update.</param>
 		public void OnTick( ) {
-			AddHunger( );
-			alive = health > 0;
-			/*
-			//Debug text message to print.
-			String tickMessage = this.ToString() + " is Ticking\nHunger=" + hunger + "\nHealth=" + health +"\n";
-
-			Console.Write( tickMessage );
-			*/
+			//Tick the mind.
 			am.OnTick( );
+
+			AddHunger( );
+			//At then end of each tick, make sure the ant is still alive.
+			alive = health > 0;
+			
+			
 		}
 		/// <summary>
 		/// Add's .001 to ant's hunger level.

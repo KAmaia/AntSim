@@ -14,11 +14,12 @@ namespace AntSimulator.Tasks {
 		public float Size { get { return size; } }
 
 		public ColonyDigTask(float size) {
-
+			this.type = TaskType.DIG_TASK;
+			this.size = size;
 		}
-
-		public override void giveToAntMind( AntMind am ) {
-			throw new NotImplementedException( );
+		public void ToggleInProcess( ) {
+			inProcess = !inProcess;
 		}
+		
 	}
 }

@@ -42,17 +42,18 @@ namespace AntSimulator.Ants {
 
 		/// <summary>
 		/// Handles task assignments.  
-		/// first it loops over tasks until it finds one !InProcess
+		/// first it loops over tasks until it finds one !Assigned
 		/// then it looks for an idle AntMind to assign the task to.
 		/// The AntMind then either accepts or rejects the task(not implemented), toggling inProcess to true if the task is accepted.  
 		/// </summary>
 		private void HandleJobAssignation( ) {
 			//TODO: Clean this up a bit with LINQ.  
 			//TODO: Learn LINQ
-			//find each task that is not in process
+			//find each task that is not Assigned
 			foreach ( ColonyTask task in availableTasks ) {
 				//find each task that is not in process
-				if ( task.InProcess ) {
+				if ( task.Assigned ) {
+				
 					continue;
 				}
 				else {
@@ -60,6 +61,7 @@ namespace AntSimulator.Ants {
 					foreach ( AntMind am in AntMinds ) {
 						if ( am.Idle ) {
 							am.AddColonyTask( task );
+							task.Assigned = true;
 							break;
 						}
 					}
